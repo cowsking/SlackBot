@@ -27,7 +27,7 @@ def is_sql_query(sentence):
 # password = "your_password"
 
 # Initializes your app with your bot token and socket mode handler
-app = App(token="xoxb-5183890757284-5194101148913-zROpyO8hkJ4PlLtL4D8z4a5T")
+app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
 # Langchain implementation
 template = """I want you to act as a PostgreSQL terminal in front of an example database.'
@@ -61,7 +61,7 @@ prompt = PromptTemplate(
 )
 
 chatgpt_chain = LLMChain(
-    llm=OpenAI(temperature=0,openai_api_key='your_api_key'), 
+    llm=OpenAI(temperature=0,openai_api_key=os.environ["OPENAI_API_TOKEN"]), 
     prompt=prompt, 
     verbose=True, 
     memory=ConversationBufferWindowMemory(k=2),
@@ -124,4 +124,4 @@ def message_handler(message, say, logger):
 # Start your app
 if __name__ == "__main__":
     # os.environ['OPENAI_API_TOKEN'] = Token
-    SocketModeHandler(app, "xapp-1-A055BDRPQDQ-5194105595889-c3624b3bb2028ac057be0e0ce781f7e4ba5bf05e1a8fd3fd0c87588d27ecb71c").start()
+    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
