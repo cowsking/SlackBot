@@ -124,4 +124,5 @@ def message_handler(message, say, logger):
 # Start your app
 if __name__ == "__main__":
     # os.environ['OPENAI_API_TOKEN'] = Token
+    
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()

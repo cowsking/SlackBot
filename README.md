@@ -13,3 +13,6 @@ To use the Assistant Slack Bot, the following environment variables need to be s
 - pip install openai
 - pip install slack-bolt
 - pip install langchain
+
+## Replace the database vairables in the code
+## Leave your Slack email to me so that I can add you to the workspace
